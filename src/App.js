@@ -18,17 +18,17 @@ function App() {
       //console.log(data.students)
         setStudent(data.students);
 
-        const students=data.students.map(std => {
-          std.tags=[]
-          return std;
+    //     const students=data.students.map(std => {
+    //       std.tags=[]
+    //       return std;
 
-        })
+    //     })
 
-    setStudent(students)
-    console.log(student)
+    // setStudent(students)
+    // console.log(student)
     })
   }, [])
-  console.log(student)
+  //console.log(student)
     const search=(e)=>{
       setSearchTerm(e.target.value);
     }
@@ -47,7 +47,7 @@ function App() {
       
       setTagName('');
      }
-     console.log(storeTags)
+     //console.log(storeTags)
   return (
     <>
     <div className='text-center mt-5 mb-5 search'>

@@ -38,15 +38,17 @@ const Student = (props) => {
                       <p>Company: {company}</p>
                       <p>Skill: {skill}</p>
                       <p>Average: {Average}%</p>
-                    </div>
-                    {
+                      <div className='mb-3'>
+                      {
                       props.storeTags.map(store => <li> {store.tagData}</li>)
-                    }
-                    <div>
+                     }
                       <form onSubmit={props.submitForm}>
                         <input type="text" name="" id="" value={props.tagName} onChange={props.tag} />
                       </form>
                     </div>
+                    </div>
+                   
+                    
                     <div className="col-6">
                       <div className=" d-flex justify-content-end">
                         <button onClick={toggle}>
