@@ -1,7 +1,10 @@
 import React from "react";
 import { useState } from "react";
 const Student = (props) => {
-  const { city, company, firstName, grades, lastName, pic, skill, email } =props.student;
+
+  const {  company, firstName, grades, lastName, pic, skill, email,id,tags } =props.student;
+  const addTag=props.addTag
+  const [tagList,setTagList]=useState(tags)
   const data = grades;
   const newGrade = data.map((i) => Number(i));
   //console.log(newGrade)
@@ -15,7 +18,11 @@ const Student = (props) => {
   const toggle = () => {
     setShow(!show);
   };
-
+const submitTag =(e)=>{
+  e.preventDefault()
+  const newTag=(e.target.children[0].value);
+  addTag(newTag,id);
+}
  
 
   return (
@@ -38,16 +45,28 @@ const Student = (props) => {
                       <p>Company: {company}</p>
                       <p>Skill: {skill}</p>
                       <p>Average: {Average}%</p>
+                      <p>{
+                        
+                        tagList.map(tag => <span  key= { tag}> { tag}, </span>)
+
+                        }
+                        </p>
+
                       <div className='mb-3'>
-                      {
+                      {/* {
                       props.storeTags.map(store => <li> {store.tagData}</li>)
-                     }
-                      <form onSubmit={props.submitForm}>
-                        <input type="text" name="" id="" value={props.tagName} onChange={props.tag} />
+                     } */}
+                      {/* <form onSubmit={props.submitForm}>
+                        <input type="text" name="" id={id} value={props.tagName} onChange={props.tag} />
+                      </form> */}
+
+                      <form onSubmit={submitTag}>
+                        <input type="text" name="" id={id}  onChange={props.tag} />
                       </form>
+
+
                     </div>
                     </div>
-                   
                     
                     <div className="col-6">
                       <div className=" d-flex justify-content-end">

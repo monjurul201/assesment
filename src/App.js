@@ -15,20 +15,11 @@ function App() {
     fetch('https://api.hatchways.io/assessment/students')
     .then(res => res.json())
     .then(data => {
-      //console.log(data.students)
+  console.log(data.students)
         setStudent(data.students);
-
-    //     const students=data.students.map(std => {
-    //       std.tags=[]
-    //       return std;
-
-    //     })
-
-    // setStudent(students)
-    // console.log(student)
     })
   }, [])
-  //console.log(student)
+
     const search=(e)=>{
       setSearchTerm(e.target.value);
     }
@@ -47,12 +38,25 @@ function App() {
       
       setTagName('');
      }
-     //console.log(storeTags)
+
+
+     
+     const searchTag=()=> {
+
+     }
+
+     const addTag =(value,id)=>{
+       const newList=student.map(std =>{
+         
+       })
+    }
+       
+    
   return (
     <>
     <div className='text-center mt-5 mb-5 search'>
     <input type="text" placeholder='Search By Name ' onChange={search} />
-    <input type="text"  placeholder='Search By Tag ' />
+    <input type="text"  placeholder='Search By Tag ' onChange={searchTag} />
     </div>
        {
         student.filter((val) =>{
@@ -62,8 +66,8 @@ function App() {
             return val
 
           }}).map(student => { 
-            //student.tag=[]
-          return <Student tagName={tagName} storeTags={storeTags}  tag={tag} submitForm={submitForm} key={student.id} student={student}></Student>
+            student.tags=['test']
+          return <Student tagName={tagName} addTag={addTag}  tag={tag} submitForm={submitForm} key={student.id} student={student}></Student>
           }) 
        } 
     </>
