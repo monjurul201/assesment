@@ -15,7 +15,7 @@ function App() {
     fetch('https://api.hatchways.io/assessment/students')
     .then(res => res.json())
     .then(data => {
-  console.log(data.students)
+  //console.log(data.students)
         setStudent(data.students);
     })
   }, [])
@@ -45,12 +45,18 @@ function App() {
 
      }
 
-     const addTag =(value,id)=>{
-       const newList=student.map(std =>{
-         
-       })
-    }
-       
+     const addTag =(tag,id)=>{
+      console.log(tag)
+        const newList=student.map(std =>{
+             if(std.id === id){
+                 std.tags = [...std.tags, tag]
+             }
+             return std;
+         })
+      console.log(newList)
+         setStudent(newList)
+     }
+      // console.log(student);
     
   return (
     <>
@@ -66,7 +72,7 @@ function App() {
             return val
 
           }}).map(student => { 
-            student.tags=['test']
+            student.tags=[]
           return <Student tagName={tagName} addTag={addTag}  tag={tag} submitForm={submitForm} key={student.id} student={student}></Student>
           }) 
        } 
